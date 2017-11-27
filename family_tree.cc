@@ -44,6 +44,10 @@ int main(int argc, const char * argv[]) {
     
     
     while(1){
+        if(family_size > 0){
+            cout << "Current selection is: ";
+            current_person->print_name();
+        }
         prompt_input();
         cin >> user_selection;
         
@@ -51,8 +55,16 @@ int main(int argc, const char * argv[]) {
         if (user_selection == 'q') {
             return 0;
         }
-        else if (user_selection == 'n'){
+        else if (user_selection == 'n') {
             current_person = add_person();
+            ++family_size;
+        }
+        else if (user_selection == 's') {
+            current_person->spouce = add_person();
+            ++family_size;
+        }
+        else if (user_selection == 'c') {
+            current_person->children.push_back(add_person());
             ++family_size;
         }
     }
@@ -86,7 +98,7 @@ Person* add_person(){
     return new_person;
 }
 
-void print_current_tree(){
-
+void add_spouce(){
+    
     
 }
